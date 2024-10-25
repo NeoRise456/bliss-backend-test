@@ -23,4 +23,15 @@
         <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.9.0"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="ServiceManagement\Application\Internal\CommandServices\" />
+      <Folder Include="ServiceManagement\Application\Internal\QueryServices\" />
+      <Folder Include="ServiceManagement\Domain\Model\Queries\" />
+      <Folder Include="ServiceManagement\Domain\Repositories\" />
+      <Folder Include="ServiceManagement\Domain\Services\" />
+      <Folder Include="ServiceManagement\Infrastructure\Repositories\" />
+      <Folder Include="ServiceManagement\Interfaces\REST\Resources\" />
+      <Folder Include="ServiceManagement\Interfaces\REST\Transform\" />
+    </ItemGroup>
+
 </Project>
