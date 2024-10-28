@@ -2,17 +2,17 @@ using NRG3.Bliss.API.ServiceManagement.Domain.Model.Commands;
 
 namespace NRG3.Bliss.API.ServiceManagement.Domain.Model.Aggregates;
 
-public class Service
+public partial class Service
 {
     public int Id { get; private set; }
     public string CategoryId { get; private set; }
     public string CompanyId { get; private set; }
     public string ServiceName { get; private set; }
     public string Description { get; private set; }
-    public int Price { get; private set; }
-    public int Duration { get; private set; }
-    
-    protected Service()
+    public double Price { get; private set; }
+    public double Duration { get; private set; }
+
+    public Service()
     {
         this.CategoryId = string.Empty;
         this.CompanyId = string.Empty;
@@ -21,7 +21,17 @@ public class Service
         this.Price = 0;
         this.Duration = 0;
     }
-    
+
+    public Service(string categoryId, string companyId, string serviceName, string description, double price, double duration)
+    {
+        this.CategoryId = categoryId;
+        this.CompanyId = companyId;
+        this.ServiceName = serviceName;
+        this.Description = description;
+        this.Price = price;
+        this.Duration = duration;
+    }
+
     public Service(CreateServiceCommand command)
     {
         this.CategoryId = command.CategoryId;
