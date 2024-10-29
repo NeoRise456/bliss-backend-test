@@ -1,45 +1,27 @@
 using NRG3.Bliss.API.ServiceManagement.Domain.Model.Commands;
+using NRG3.Bliss.API.ServiceManagement.Domain.Model.Entities;
 
 namespace NRG3.Bliss.API.ServiceManagement.Domain.Model.Aggregates;
 
 public partial class Service
 {
-    public int Id { get; private set; }
-    public string CategoryId { get; private set; }
-    public string CompanyId { get; private set; }
+    public int Id { get; }
+    public int CompanyId { get; private set; }
+    public Company Company { get; private set; }
+    public int CategoryId { get; private set; }
+    public Category Category { get; private set; }
     public string ServiceName { get; private set; }
     public string Description { get; private set; }
     public double Price { get; private set; }
     public double Duration { get; private set; }
 
-    public Service()
+    public Service(int companyId, int categoryId, string serviceName, string description, double price, double duration)
     {
-        this.CategoryId = string.Empty;
-        this.CompanyId = string.Empty;
-        this.ServiceName = string.Empty;
-        this.Description = string.Empty;
-        this.Price = 0;
-        this.Duration = 0;
+        CompanyId = companyId;
+        CategoryId = categoryId;
+        ServiceName = serviceName;
+        Description = description;
+        Price = price;
+        Duration = duration;
     }
-
-    public Service(string categoryId, string companyId, string serviceName, string description, double price, double duration)
-    {
-        this.CategoryId = categoryId;
-        this.CompanyId = companyId;
-        this.ServiceName = serviceName;
-        this.Description = description;
-        this.Price = price;
-        this.Duration = duration;
-    }
-
-    public Service(CreateServiceCommand command)
-    {
-        this.CategoryId = command.CategoryId;
-        this.CompanyId = command.CompanyId;
-        this.ServiceName = command.ServiceName;
-        this.Description = command.Description;
-        this.Price = command.Price;
-        this.Duration = command.Duration;
-    }
-    
 }
