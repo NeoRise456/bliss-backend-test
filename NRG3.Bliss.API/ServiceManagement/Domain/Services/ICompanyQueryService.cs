@@ -6,4 +6,5 @@ namespace NRG3.Bliss.API.ServiceManagement.Domain.Services;
 public interface ICompanyQueryService
 {
     Task<IEnumerable<Company>> Handle(GetAllCompaniesQuery query);
+    Task<Company?> Handle(GetCompanyByIdQuery query);
 }

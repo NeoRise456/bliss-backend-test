@@ -11,4 +11,9 @@ public class CompanyQueryService(ICompanyRepository companyRepository) : ICompan
     {
         return await companyRepository.ListAsync();
     }
+
+    public async Task<Company?> Handle(GetCompanyByIdQuery query)
+    {
+        return await companyRepository.FindByIdAsync(query.CompanyId);
+    }
 }
