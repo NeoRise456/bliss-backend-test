@@ -1,4 +1,5 @@
 using NRG3.Bliss.API.ServiceManagement.Domain.Model.Aggregates;
+using NRG3.Bliss.API.ServiceManagement.Domain.Model.Commands;
 
 namespace NRG3.Bliss.API.ServiceManagement.Domain.Model.Entities;
 
@@ -38,9 +39,7 @@ public partial class Company
         PhoneNumber = phoneNumber;
         Description = description;
     }
-
-    //TODO - Create the command constructor
-    /*
+    
     public Company(CreateCompanyCommand command)
     {
         Name = command.Name;
@@ -48,6 +47,7 @@ public partial class Company
         Email = command.Email;
         WebsiteUrl = command.WebsiteUrl;
         PhoneNumber = command.PhoneNumber;
+        Description = command.Description;
     }
-    */
+
 }
