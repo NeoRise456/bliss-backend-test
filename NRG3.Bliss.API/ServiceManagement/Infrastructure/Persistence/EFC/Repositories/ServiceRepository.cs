@@ -9,7 +9,7 @@ namespace NRG3.Bliss.API.ServiceManagement.Infrastructure.Persistence.EFC.Reposi
 public class ServiceRepository(AppDbContext context) : BaseRepository<Service>(context), IServiceRepository
 {
     public async Task<IEnumerable<Service>> FindServicesByCompanyIdAsync(int companyId) =>
-        await Context.Set<Service>().Include(s => s.Company)
+        await Context.Set<Service>().Include(s => s.Company).Include(s =>s.Category)
             .Where(s => s.CompanyId == companyId).ToListAsync();
     
 }
