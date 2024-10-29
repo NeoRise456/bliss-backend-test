@@ -4,6 +4,13 @@ namespace NRG3.Bliss.API.ServiceManagement.Domain.Model.Entities;
 
 public class Category
 {
+    public int Id { get; set; }
+
+    public string Name { get; set; }
+
+    public string Description { get; set; }
+
+    public ICollection<Service> Services { get; set; }
     public Category()
     {
         Name = string.Empty;
@@ -15,15 +22,8 @@ public class Category
         Name = name;
         Description = description;
     }
-
-    public int Id { get; set; }
-
-    public string Name { get; set; }
-
-    public string Description { get; set; }
-
-    public ICollection<Service> Services { get; set; }
-
+    
+    //TODO - Create the command constructor
     /*
     public Category(CreateCategoryCommand command)
     {

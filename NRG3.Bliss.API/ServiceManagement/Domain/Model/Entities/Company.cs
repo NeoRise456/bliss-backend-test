@@ -1,3 +1,5 @@
+using NRG3.Bliss.API.ServiceManagement.Domain.Model.Aggregates;
+
 namespace NRG3.Bliss.API.ServiceManagement.Domain.Model.Entities;
 
 public class Company
@@ -13,6 +15,8 @@ public class Company
     public string WebsiteUrl { get; set; }
 
     public string PhoneNumber { get; set; }
+    
+    public ICollection<Service> Services { get; set; }
     
     public Company()
     {
