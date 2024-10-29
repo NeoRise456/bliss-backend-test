@@ -33,8 +33,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
             .EnableSensitiveDataLogging();
     else if (builder.Environment.IsProduction())
         options.UseMySQL(connectionString);
-    else
-        throw new Exception("Environment is not defined.");
 });
 
 // OpenAPI/Swagger Configuration
@@ -80,3 +78,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.Run();
