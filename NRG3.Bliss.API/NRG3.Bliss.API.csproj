@@ -24,7 +24,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="ServiceManagement\Interfaces\REST\Resources\" />
         <Folder Include="ServiceManagement\Interfaces\REST\Transform\" />
     </ItemGroup>
 
