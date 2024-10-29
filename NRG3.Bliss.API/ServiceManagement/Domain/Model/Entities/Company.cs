@@ -2,7 +2,7 @@ using NRG3.Bliss.API.ServiceManagement.Domain.Model.Aggregates;
 
 namespace NRG3.Bliss.API.ServiceManagement.Domain.Model.Entities;
 
-public class Company
+public partial class Company
 {
     public int Id { get; set; }
 
