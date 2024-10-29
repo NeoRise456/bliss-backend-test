@@ -10,7 +10,7 @@ public partial class Category
 
     public string Description { get; set; }
 
-    public ICollection<Service> Services { get; set; }
+    public ICollection<Service> Services { get;}
     public Category()
     {
         Name = string.Empty;

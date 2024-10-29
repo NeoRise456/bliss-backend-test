@@ -7,9 +7,9 @@ public partial class Service
 {
     public int Id { get; }
     public int CompanyId { get; private set; }
-    public Company Company { get; private set; }
+    public Company Company { get; internal set; }
     public int CategoryId { get; private set; }
-    public Category Category { get; private set; }
+    public Category Category { get; internal set; }
     public string ServiceName { get; private set; }
     public string Description { get; private set; }
     public double Price { get; private set; }
