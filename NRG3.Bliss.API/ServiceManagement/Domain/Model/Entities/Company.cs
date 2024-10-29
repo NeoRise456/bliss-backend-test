@@ -16,6 +16,7 @@ public partial class Company
 
     public string PhoneNumber { get; set; }
     
+    public string Description { get; set; }
     public ICollection<Service> Services { get; set; }
     
     public Company()
@@ -25,15 +26,17 @@ public partial class Company
         Email = string.Empty;
         WebsiteUrl = string.Empty;
         PhoneNumber = string.Empty;
+        Description = string.Empty;
     }
 
-    public Company(string name, string ruc, string email, string websiteUrl, string phoneNumber)
+    public Company(string name, string ruc, string email, string websiteUrl, string phoneNumber, string description)
     {
         Name = name;
         Ruc = ruc;
         Email = email;
         WebsiteUrl = websiteUrl;
         PhoneNumber = phoneNumber;
+        Description = description;
     }
 
     //TODO - Create the command constructor
