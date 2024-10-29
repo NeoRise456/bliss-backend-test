@@ -5,5 +5,5 @@ namespace NRG3.Bliss.API.ServiceManagement.Domain.Services;
 
 public interface IServiceCommandService
 {
-    Task<Service> Handle(CreateServiceCommand command);
+    Task<Service?> Handle(CreateServiceCommand command);
 }
