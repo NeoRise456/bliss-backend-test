@@ -24,10 +24,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="ServiceManagement\Application\Internal\CommandServices\" />
-      <Folder Include="ServiceManagement\Application\Internal\QueryServices\" />
-      <Folder Include="ServiceManagement\Interfaces\REST\Resources\" />
-      <Folder Include="ServiceManagement\Interfaces\REST\Transform\" />
+        <Folder Include="ServiceManagement\Application\Internal\CommandServices\" />
+        <Folder Include="ServiceManagement\Application\Internal\QueryServices\" />
+        <Folder Include="ServiceManagement\Interfaces\REST\Resources\" />
+        <Folder Include="ServiceManagement\Interfaces\REST\Transform\" />
     </ItemGroup>
 
 </Project>
