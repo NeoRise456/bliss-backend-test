@@ -17,7 +17,7 @@ public class ServiceQueryService(IServiceRepository serviceRepository) : IServic
         return await serviceRepository.ListAsync();
     }
     
-    public async Task<IEnumerable<Service>> Handle(GetServicesByCompanyId query)
+    public async Task<IEnumerable<Service>> Handle(GetAllServicesByCompanyIdQuery query)
     {
         return await serviceRepository.FindServicesByCompanyIdAsync(query.CompanyId);
     }

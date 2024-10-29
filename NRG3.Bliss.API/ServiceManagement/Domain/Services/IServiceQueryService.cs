@@ -7,5 +7,5 @@ public interface IServiceQueryService
 {
     Task<IEnumerable<Service>> Handle(GetAllServicesQuery query);
     Task<Service?> Handle(GetServiceByIdQuery query);
-    Task<IEnumerable<Service>> Handle(GetServicesByCompanyId query);
+    Task<IEnumerable<Service>> Handle(GetAllServicesByCompanyIdQuery query);
 }
