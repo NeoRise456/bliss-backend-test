@@ -1,4 +1,5 @@
 using NRG3.Bliss.API.ServiceManagement.Domain.Model.Aggregates;
+using NRG3.Bliss.API.ServiceManagement.Domain.Model.Commands;
 
 namespace NRG3.Bliss.API.ServiceManagement.Domain.Model.Entities;
 
@@ -23,12 +24,9 @@ public partial class Category
         Description = description;
     }
     
-    //TODO - Create the command constructor
-    /*
     public Category(CreateCategoryCommand command)
     {
         Name = command.Name;
         Description = command.Description;
     }
-    */
 }
