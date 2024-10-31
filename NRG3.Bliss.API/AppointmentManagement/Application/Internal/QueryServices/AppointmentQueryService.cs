@@ -9,11 +9,11 @@ public class AppointmentQueryService(IAppointmentRepository appointmentRepositor
 {
     public async Task<IEnumerable<Appointment>> Handle(GetAllAppointmentsByUserIdQuery query)
     {
-        return await appointmentRepository.FindByUserIdAsync(query.UserId);
+        return await appointmentRepository.FindAppointmentsByUserIdAsync(query.UserId);
     }
 
     public async Task<Appointment?> Handle(GetAppointmentByIdQuery query)
     {
-        return await appointmentRepository.FindByIdAsync(query.Id);
+        return await appointmentRepository.FindAppointmentByIdAsync(query.Id);
     }
 }
