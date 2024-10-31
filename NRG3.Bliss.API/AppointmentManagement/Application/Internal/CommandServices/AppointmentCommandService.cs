@@ -9,6 +9,7 @@ namespace NRG3.Bliss.API.AppointmentManagement.Application.Internal.CommandServi
 
 public class AppointmentCommandService(
     IAppointmentRepository appointmentRepository,
+    IUserRepository userRepository,
     IServiceRepository serviceRepository,
     ICompanyRepository companyRepository,
     IUnitOfWork unitOfWork)
@@ -17,12 +18,18 @@ public class AppointmentCommandService(
     public async Task<Appointment?> Handle(CreateAppointmentCommand command)
     {
         var appointment = new Appointment(command);
+        
         await appointmentRepository.AddAsync(appointment);
         await unitOfWork.CompleteAsync();
+        
+        var user = await userRepository.FindByIdAsync(command.UserId);
         var service = await serviceRepository.FindByIdAsync(command.ServiceId);
         var company = await companyRepository.FindByIdAsync(command.CompanyId);
+        
         if (service != null) appointment.ServiceId = service.Id;
         if (company != null) appointment.CompanyId = company.Id;
+        if (user != null) appointment.UserId = user.Id;
+        
         return appointment;
     }
 }
