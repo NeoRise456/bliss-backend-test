@@ -9,12 +9,12 @@ public class ServiceQueryService(IServiceRepository serviceRepository) : IServic
 {
     public async Task<Service?> Handle(GetServiceByIdQuery query)
     {
-        return await serviceRepository.FindByIdAsync(query.ServiceId);
+        return await serviceRepository.GetServiceById(query.ServiceId);
     }
     
     public async Task<IEnumerable<Service>> Handle(GetAllServicesQuery query)
     {
-        return await serviceRepository.ListAsync();
+        return await serviceRepository.GetAllServices();
     }
     
     public async Task<IEnumerable<Service>> Handle(GetAllServicesByCompanyIdQuery query)
