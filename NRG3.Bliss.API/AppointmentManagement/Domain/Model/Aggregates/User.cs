@@ -1,4 +1,6 @@
-﻿namespace NRG3.Bliss.API.AppointmentManagement.Domain.Model.Entities;
+﻿using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Aggregates;
+
+namespace NRG3.Bliss.API.AppointmentManagement.Domain.Model.Entities;
 
 public partial class User
 {
@@ -12,6 +14,8 @@ public partial class User
     public string Address { get; private set; }
     public string City { get; private set; }
     public DateTime BirthDate { get; private set; }
+    
+    public ICollection<Appointment> Appointments { get; }
     
     public User( string firstName, 
         string lastName, 
