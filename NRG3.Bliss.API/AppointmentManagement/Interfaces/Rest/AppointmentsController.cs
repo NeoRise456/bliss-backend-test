@@ -1,6 +1,10 @@
 ﻿using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
+using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Commands;
+using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Queries;
+using NRG3.Bliss.API.AppointmentManagement.Domain.Services;
 using NRG3.Bliss.API.AppointmentManagement.Interfaces.Rest.Resources;
+using NRG3.Bliss.API.AppointmentManagement.Interfaces.Rest.Transform;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace NRG3.Bliss.API.AppointmentManagement.Interfaces.Rest;
@@ -11,6 +15,8 @@ namespace NRG3.Bliss.API.AppointmentManagement.Interfaces.Rest;
 [Produces(MediaTypeNames.Application.Json)]
 [Tags("Appointments")]
 public class AppointmentsController(
+    IAppointmentCommandService appointmentCommandService,
+    IAppointmentQueryService appointmentQueryService
     ) : ControllerBase
 {
     [HttpGet("{userId:int}")]
@@ -21,7 +27,12 @@ public class AppointmentsController(
     [SwaggerResponse(StatusCodes.Status200OK, "The appointments were found", typeof(IEnumerable<AppointmentResource>))]
     public async Task<IActionResult> GetAppointmentsByUserId([FromRoute] int userId)
     {
-        return Ok();
+        var getAllAppointmentsByUserIdQuery = new GetAllAppointmentsByUserIdQuery(userId);
+        var appointments = await appointmentQueryService.Handle(getAllAppointmentsByUserIdQuery);
+        var appointmentResources = appointments.Select(
+            AppointmentResourceFromEntityAssembler.ToResourceFromEntity
+            );
+        return Ok(appointmentResources);
     }
     
     [HttpPost]
@@ -33,6 +44,7 @@ public class AppointmentsController(
     [SwaggerResponse(StatusCodes.Status400BadRequest, "The request is invalid")]
     public async Task<IActionResult> CreateAppointment([FromBody] CreateAppointmentResource resource)
     {
+        var createAppointmentCommand = CreateAppointmentCommandResourceFromEntityAssembler.ToCommandFromResource(resource);
         return Ok();
     }
     
