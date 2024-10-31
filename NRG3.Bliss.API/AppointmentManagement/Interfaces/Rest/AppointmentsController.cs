@@ -19,6 +19,22 @@ public class AppointmentsController(
     IAppointmentQueryService appointmentQueryService
     ) : ControllerBase
 {
+
+    [HttpGet("{appointmentId:int}")]
+    [SwaggerOperation(
+        Summary = "Get appointments by id",
+        Description = "Get an appointments by the id it has",
+        OperationId = "GetAppointmentById")]
+    [SwaggerResponse(StatusCodes.Status200OK, "The appointment was found", typeof(AppointmentResource))]
+    public async Task<IActionResult> GetAppointmentById([FromRoute] int appointmentId)
+    {
+        var getAppointmentByIdQuery = new GetAppointmentByIdQuery(appointmentId);
+        var appointment = await appointmentQueryService.Handle(getAppointmentByIdQuery);
+        if (appointment is null) return NotFound();
+        var appointmentResource = AppointmentResourceFromEntityAssembler.ToResourceFromEntity(appointment);
+        return Ok(appointmentResource);
+    }
+    
     [HttpGet("{userId:int}")]
     [SwaggerOperation (
         Summary = "Get appointments by user id",
@@ -35,6 +51,9 @@ public class AppointmentsController(
         return Ok(appointmentResources);
     }
     
+    
+    
+    
     [HttpPost]
     [SwaggerOperation(
         Summary = "Create a new appointment",
@@ -45,7 +64,10 @@ public class AppointmentsController(
     public async Task<IActionResult> CreateAppointment([FromBody] CreateAppointmentResource resource)
     {
         var createAppointmentCommand = CreateAppointmentCommandResourceFromEntityAssembler.ToCommandFromResource(resource);
-        return Ok();
+        var appointment = await appointmentCommandService.Handle(createAppointmentCommand);
+        if (appointment is null) return NotFound();
+        var appointmentResource = AppointmentResourceFromEntityAssembler.ToResourceFromEntity(appointment);
+        return CreatedAtAction(nameof(GetAppointmentById), new { appointmentId = appointment.Id }, appointmentResource);
     }
     
 }
