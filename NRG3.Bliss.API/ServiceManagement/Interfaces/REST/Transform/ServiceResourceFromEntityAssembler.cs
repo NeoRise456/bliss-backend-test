@@ -9,8 +9,8 @@ public static class ServiceResourceFromEntityAssembler
     {
         return new ServiceResource(
             entity.Id, 
-            CompanyResourceFromEntityAssembler.ToResourceFromEntity(entity.Company), 
-            CategoryResourceFromEntityAssembler.ToResourceFromEntity(entity.Category),
+            ServiceCompanyResourceFromEntityAssembler.ToResourceFromEntity(entity.Company), 
+            ServiceCategoryResourceFromEntityAssembler.ToResourceFromEntity(entity.Category),
             entity.ServiceName,
             entity.Description,
             entity.Price,
