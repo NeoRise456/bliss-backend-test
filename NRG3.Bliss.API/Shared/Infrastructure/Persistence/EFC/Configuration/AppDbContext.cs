@@ -1,5 +1,6 @@
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using Microsoft.EntityFrameworkCore;
+using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Aggregates;
 using NRG3.Bliss.API.ServiceManagement.Domain.Model.Aggregates;
 using NRG3.Bliss.API.ServiceManagement.Domain.Model.Entities;
 using NRG3.Bliss.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
@@ -35,6 +36,16 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         builder.Entity<Company>().Property(c => c.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Company>().Property(c => c.Name).IsRequired().HasMaxLength(100);
         builder.Entity<Company>().Property(c => c.Ruc).HasMaxLength(11);
+
+        builder.Entity<Appointment>().HasKey(a => a.Id);
+        builder.Entity<Appointment>().Property(a => a.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Appointment>().Property(a => a.UserId).IsRequired();
+        builder.Entity<Appointment>().Property(a => a.CompanyId).IsRequired();
+        builder.Entity<Appointment>().Property(a => a.ServiceId).IsRequired();
+        builder.Entity<Appointment>().Property(a => a.Status).IsRequired().HasMaxLength(50);
+        builder.Entity<Appointment>().Property(a => a.ReservationDate).IsRequired();
+        builder.Entity<Appointment>().Property(a => a.ReservationStartTime).IsRequired();
+        builder.Entity<Appointment>().Property(a => a.Requirements).IsRequired();
         
         builder.Entity<Category>()
             .HasMany(c => c.Services)
