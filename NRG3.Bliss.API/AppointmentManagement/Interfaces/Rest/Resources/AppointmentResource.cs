@@ -1,14 +1,16 @@
-﻿using Org.BouncyCastle.Asn1.Cms;
+﻿
+using NRG3.Bliss.API.ServiceManagement.Interfaces.REST.Resources;
 
 namespace NRG3.Bliss.API.AppointmentManagement.Interfaces.Rest.Resources;
 
 public record AppointmentResource(
     int id,
-    int userId,
-    int serviceId,
-    int companyId, 
-    DateTime reservationDate,
+    UserResource user,
+    ServiceResource service,
+    CompanyResource company, 
+    DateTimeOffset? reservationDate,
     string status, 
     DateTime date, 
-    string time
+    string time,
+    string requirements
     );
