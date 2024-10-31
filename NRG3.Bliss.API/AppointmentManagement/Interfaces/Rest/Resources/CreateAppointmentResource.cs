@@ -7,5 +7,6 @@ public record CreateAppointmentResource(
     DateTime reservationDate,
     string status, 
     DateTime date, 
-    string time
+    string time,
+    string requirements
     );
