@@ -6,7 +6,6 @@ namespace NRG3.Bliss.API.AppointmentManagement.Domain.Repositories;
 public interface IAppointmentRepository : IBaseRepository<Appointment>
 {
     Task<IEnumerable<Appointment>> FindAppointmentsByUserIdAsync(int userId);
-    Task<Appointment?> FindAppointmentByIdAsync(int id);
-
+    Task<Appointment> FindAppointmentByIdAsync(int id);
     
 }
