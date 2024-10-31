@@ -8,9 +8,9 @@ public partial class Appointment
     
     public int UserId { get; private set; }
     
-    public int CompanyId { get; private set; }
+    public int CompanyId { get; set; }
     
-    public int ServiceId { get; private set; }
+    public int ServiceId { get; set; }
     
     public string Status { get; private set; }
     
