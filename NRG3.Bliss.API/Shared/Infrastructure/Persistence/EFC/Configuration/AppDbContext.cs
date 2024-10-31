@@ -43,6 +43,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         builder.Entity<Appointment>().Property(a => a.UserId).IsRequired();
         builder.Entity<Appointment>().Property(a => a.CompanyId).IsRequired();
         builder.Entity<Appointment>().Property(a => a.ServiceId).IsRequired();
+        builder.Entity<Appointment>().Property(a => a.RegisterAt).IsRequired();
         builder.Entity<Appointment>().Property(a => a.Status).IsRequired().HasMaxLength(50);
         builder.Entity<Appointment>().Property(a => a.ReservationDate).IsRequired();
         builder.Entity<Appointment>().Property(a => a.ReservationStartTime).IsRequired();
