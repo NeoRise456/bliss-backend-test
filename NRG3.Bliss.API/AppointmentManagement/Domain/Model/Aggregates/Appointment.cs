@@ -1,4 +1,5 @@
-﻿using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Commands;
+﻿using System.Runtime.InteropServices.JavaScript;
+using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Commands;
 using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Entities;
 using NRG3.Bliss.API.ServiceManagement.Domain.Model.Aggregates;
 using NRG3.Bliss.API.ServiceManagement.Domain.Model.Entities;
@@ -18,6 +19,7 @@ public partial class Appointment
     public int ServiceId { get; set; }
     public Service Service { get; internal set; }
     
+    public DateTime RegisterAt { get; internal set; }
     public string Status { get; private set; }
     public DateTime ReservationDate { get; private set; }
     
