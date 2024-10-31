@@ -14,6 +14,6 @@ public class AppointmentQueryService(IAppointmentRepository appointmentRepositor
 
     public async Task<Appointment?> Handle(GetAppointmentByIdQuery query)
     {
-        return await appointmentRepository.FindAppointmentByIdAsync(query.Id);
+        return await appointmentRepository.FindByIdAsync(query.AppointmentId);
     }
 }
