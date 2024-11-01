@@ -30,6 +30,19 @@ public class AppointmentCommandService(
         if (company != null) appointment.CompanyId = company.Id;
         if (user != null) appointment.UserId = user.Id;
         
-        return appointment;
+        return appointment; 
+    }
+
+    public async void Handle(DeleteAppointmentCommand command)
+    {
+        var appointment = await appointmentRepository.FindByIdAsync(command.appointmentId);
+        
+        if (appointment != null)
+        {
+            appointmentRepository.Remove(appointment);
+            await unitOfWork.CompleteAsync();
+        }
+
+
     }
 }
