@@ -8,5 +8,6 @@ public interface IAppointmentRepository : IBaseRepository<Appointment>
     Task<IEnumerable<Appointment>> FindAppointmentsByUserIdAsync(int userId);
     Task<Appointment?> FindByServiceIdAndTimeAsync(int serviceId, DateTime reservationDate, string reservationStartTime);
     Task<Appointment?> FindByUserIdAndTimeAsync(int userId, DateTime reservationDate, string reservationStartTime);
+    Task<Appointment?> FindAppointmentByIdAsync(int appointmentId);
     
 }
