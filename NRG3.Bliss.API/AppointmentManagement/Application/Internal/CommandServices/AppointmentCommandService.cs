@@ -33,7 +33,7 @@ public class AppointmentCommandService(
         return appointment; 
     }
 
-    public async void Handle(DeleteAppointmentCommand command)
+    public async Task Handle(DeleteAppointmentCommand command)
     {
         var appointment = await appointmentRepository.FindByIdAsync(command.appointmentId);
         
