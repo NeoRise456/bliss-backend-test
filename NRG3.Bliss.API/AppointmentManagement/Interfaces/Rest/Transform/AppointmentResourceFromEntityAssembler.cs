@@ -10,9 +10,9 @@ public static class AppointmentResourceFromEntityAssembler
     {
         return new AppointmentResource(
             entity.Id,
-            UserResourceFromEntityAssembler.ToResourceFromEntity(entity.User),
-            ServiceResourceFromEntityAssembler.ToResourceFromEntity(entity.Service),
-            CompanyResourceFromEntityAssembler.ToResourceFromEntity(entity.Company),
+            entity.UserId, 
+            entity.ServiceId,
+            entity.CompanyId,
             entity.CreatedDate,
             entity.Status,
             entity.ReservationDate,
