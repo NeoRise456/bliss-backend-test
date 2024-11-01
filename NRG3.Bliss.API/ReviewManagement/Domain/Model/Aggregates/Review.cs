@@ -1,5 +1,5 @@
 ﻿using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Aggregates;
-using NRG3.Bliss.API.ReviewManagement.Domain.Model.Entity;
+using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Entities;
 using NRG3.Bliss.API.ReviewManagement.Domain.Model.Commands;
 namespace NRG3.Bliss.API.ReviewManagement.Domain.Model.Aggregates;
 
@@ -15,7 +15,7 @@ public partial class Review
 {
     public int  Id { get; }
     public int UserId { get; internal set; }
-    public User User { get; internal set; }
+    public User UserR { get; internal set; }
     public int AppointmentId { get; internal set; }
     public Appointment
     Appointment { get; set; }
