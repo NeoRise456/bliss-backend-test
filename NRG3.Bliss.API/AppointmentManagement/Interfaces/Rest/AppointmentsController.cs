@@ -78,8 +78,9 @@ public class AppointmentsController(
     [SwaggerResponse(StatusCodes.Status200OK, "The appointment was deleted", typeof(AppointmentResource))]
     public async Task<IActionResult> DeleteAppointmentById([FromRoute] int appointmentId)
     {
-        
-        return Ok();
+        var deleteAppointmentCommand = new DeleteAppointmentCommand(appointmentId);
+        appointmentCommandService.Handle(deleteAppointmentCommand);
+        return Ok("appointment given id successfully deleted");
     }
     
 }
