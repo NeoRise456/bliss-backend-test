@@ -35,7 +35,7 @@ public class AppointmentsController(
         return Ok(appointmentResource);
     }
     
-    [HttpGet("{userId:int}")]
+    [HttpGet("user/{userId:int}")]
     [SwaggerOperation (
         Summary = "Get appointments by user id",
         Description = "Get the appointments a user has",
@@ -68,6 +68,18 @@ public class AppointmentsController(
         if (appointment is null) return NotFound();
         var appointmentResource = AppointmentResourceFromEntityAssembler.ToResourceFromEntity(appointment);
         return CreatedAtAction(nameof(GetAppointmentById), new { appointmentId = appointment.Id }, appointmentResource);
+    }
+
+    [HttpDelete("{appointmentId:int}")]
+    [SwaggerOperation(
+        Summary = "Delete an appointment by id",
+        Description = "Delete an appointment in a system by its id",
+        OperationId = "DeleteAppointmentById")]
+    [SwaggerResponse(StatusCodes.Status200OK, "The appointment was deleted", typeof(AppointmentResource))]
+    public async Task<IActionResult> DeleteAppointmentById([FromRoute] int appointmentId)
+    {
+        
+        return Ok();
     }
     
 }
