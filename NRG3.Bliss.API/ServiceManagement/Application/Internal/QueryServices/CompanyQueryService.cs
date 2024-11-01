@@ -16,4 +16,5 @@ public class CompanyQueryService(ICompanyRepository companyRepository) : ICompan
     {
         return await companyRepository.FindByIdAsync(query.CompanyId);
     }
+    
 }
