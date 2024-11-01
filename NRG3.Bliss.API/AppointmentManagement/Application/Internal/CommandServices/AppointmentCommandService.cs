@@ -7,6 +7,24 @@ using NRG3.Bliss.API.Shared.Domain.Repositories;
 
 namespace NRG3.Bliss.API.AppointmentManagement.Application.Internal.CommandServices;
 
+/// <summary>
+/// Appointment command service
+/// </summary>
+/// <param name="appointmentRepository">
+/// Appointment repository
+/// </param>
+/// <param name="userRepository">
+/// User repository
+/// </param>
+/// <param name="serviceRepository">
+/// Service repository
+/// </param>
+/// <param name="companyRepository">
+/// Company repository
+/// </param>
+/// <param name="unitOfWork">
+/// Unit of work
+/// </param>
 public class AppointmentCommandService(
     IAppointmentRepository appointmentRepository,
     IUserRepository userRepository,
@@ -15,6 +33,7 @@ public class AppointmentCommandService(
     IUnitOfWork unitOfWork)
     : IAppointmentCommandService
 {
+    /// <inheritdoc />
     public async Task<Appointment?> Handle(CreateAppointmentCommand command)
     {
         
@@ -46,6 +65,7 @@ public class AppointmentCommandService(
         return appointment; 
     }
 
+    /// <inheritdoc />
     public async Task Handle(DeleteAppointmentCommand command)
     {
         var appointment = await appointmentRepository.FindByIdAsync(command.appointmentId);
