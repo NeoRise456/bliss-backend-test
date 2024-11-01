@@ -17,6 +17,19 @@ public class AppointmentCommandService(
 {
     public async Task<Appointment?> Handle(CreateAppointmentCommand command)
     {
+        
+        var existingAppointment = await appointmentRepository.FindByServiceIdAndTimeAsync(command.ServiceId, command.ReservationDate, command.ReservationStartTime);
+        if (existingAppointment != null)
+        {
+            throw new InvalidOperationException("An appointment for this service at the specified time already exists.");
+        }
+        
+        var userAppointment = await appointmentRepository.FindByUserIdAndTimeAsync(command.UserId, command.ReservationDate, command.ReservationStartTime);
+        if (userAppointment != null)
+        {
+            throw new InvalidOperationException("The user already has an appointment at the specified time.");
+        }
+        
         var appointment = new Appointment(command);
         
         await appointmentRepository.AddAsync(appointment);
