@@ -27,12 +27,12 @@ public partial class Appointment
     public Service Service { get; internal set; }
     
     public DateTime RegisterAt { get; internal set; }
-    public string Status { get; private set; }
-    public DateTime ReservationDate { get; private set; }
+    public string Status { get; set; }
+    public DateTime ReservationDate { get; set; }
     
-    public string ReservationStartTime { get; private set; }
+    public string ReservationStartTime { get; set; }
     
-    public string Requirements { get; private set; }
+    public string Requirements { get; set; }
 
     public Appointment()
     {
