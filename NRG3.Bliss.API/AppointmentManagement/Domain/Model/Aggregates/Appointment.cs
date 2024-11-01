@@ -6,6 +6,13 @@ using NRG3.Bliss.API.ServiceManagement.Domain.Model.Entities;
 
 namespace NRG3.Bliss.API.AppointmentManagement.Domain.Model.Aggregates;
 
+/// <summary>
+/// Appointment aggregate root
+/// </summary>
+/// <remarks>
+/// This class represents the appointment aggregate root.
+/// It contains the properties and methods to manage the appointment information.
+/// </remarks>
 public partial class Appointment
 {
     public int Id { get; }
