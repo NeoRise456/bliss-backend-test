@@ -6,4 +6,5 @@ namespace NRG3.Bliss.API.AppointmentManagement.Domain.Services;
 public interface IAppointmentCommandService
 {
     Task<Appointment?> Handle(CreateAppointmentCommand command);
+    void Handle(DeleteAppointmentCommand command);
 }
