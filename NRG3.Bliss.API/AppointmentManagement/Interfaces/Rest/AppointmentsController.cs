@@ -79,7 +79,7 @@ public class AppointmentsController(
     public async Task<IActionResult> DeleteAppointmentById([FromRoute] int appointmentId)
     {
         var deleteAppointmentCommand = new DeleteAppointmentCommand(appointmentId);
-        appointmentCommandService.Handle(deleteAppointmentCommand);
+        await appointmentCommandService.Handle(deleteAppointmentCommand);
         return Ok("appointment given id successfully deleted");
     }
     
