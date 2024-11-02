@@ -4,6 +4,11 @@ using NRG3.Bliss.API.AppointmentManagement.Application.Internal.QueryServices;
 using NRG3.Bliss.API.AppointmentManagement.Domain.Repositories;
 using NRG3.Bliss.API.AppointmentManagement.Domain.Services;
 using NRG3.Bliss.API.AppointmentManagement.Infrastructure.Persistence.EFC.Repositories;
+using NRG3.Bliss.API.ReviewManagement.Application.Internal.CommandServices;
+using NRG3.Bliss.API.ReviewManagement.Application.Internal.QueryServices;
+using NRG3.Bliss.API.ReviewManagement.Domain.Repositories;
+using NRG3.Bliss.API.ReviewManagement.Domain.Services;
+using NRG3.Bliss.API.ReviewManagement.Infrastructure.Persistence.EFC.Repositories;
 using NRG3.Bliss.API.ServiceManagement.Application.Internal.CommandServices;
 using NRG3.Bliss.API.ServiceManagement.Application.Internal.QueryServices;
 using NRG3.Bliss.API.ServiceManagement.Domain.Repositories;
@@ -71,6 +76,10 @@ builder.Services.AddScoped<IAppointmentQueryService, AppointmentQueryService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
+// Review Management Bounded Context Dependency Injection Configuration
+builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+builder.Services.AddScoped<IReviewCommandService, ReviewCommandService>();
+builder.Services.AddScoped<IReviewQueryService, ReviewQueryService>();
 
 var app = builder.Build();
 
