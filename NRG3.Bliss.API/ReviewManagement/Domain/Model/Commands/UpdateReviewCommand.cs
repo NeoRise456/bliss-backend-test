@@ -7,4 +7,4 @@
 /// The review id to update
 /// </param>
 
-public class UpdateReviewCommand(int reviewId);
+public record UpdateReviewCommand(int reviewId);
