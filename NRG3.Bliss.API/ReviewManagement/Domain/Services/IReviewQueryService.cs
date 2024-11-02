@@ -1,4 +1,5 @@
-﻿using NRG3.Bliss.API.ReviewManagement.Domain.Model.Aggregates;
+﻿// IReviewQueryService.cs
+using NRG3.Bliss.API.ReviewManagement.Domain.Model.Aggregates;
 using NRG3.Bliss.API.ReviewManagement.Domain.Model.Queries;
 
 namespace NRG3.Bliss.API.ReviewManagement.Domain.Services;
@@ -8,6 +9,17 @@ namespace NRG3.Bliss.API.ReviewManagement.Domain.Services;
 /// </summary>
 public interface IReviewQueryService
 {
+    /// <summary>
+    /// Handle get review by id query
+    /// </summary>
+    /// <param name="query">
+    /// The <see cref="GetReviewByIdQuery"/> query
+    /// </param>
+    /// <returns>
+    /// The <see cref="Review"/> object with the review
+    /// </returns>
+    Task<Review?> Handle(GetReviewByIdQuery query);
+
     /// <summary>
     /// Handle get all reviews by user id query
     /// </summary>
