@@ -19,6 +19,10 @@ public class ServiceQueryService(IServiceRepository serviceRepository) : IServic
     
     public async Task<IEnumerable<Service>> Handle(GetAllServicesByCompanyIdQuery query)
     {
+        if (query.CompanyId <= 0)
+        {
+            throw new ArgumentException("CompanyId must be greater than zero.");
+        }
         return await serviceRepository.FindServicesByCompanyIdAsync(query.CompanyId);
     }
 }
