@@ -5,11 +5,15 @@ using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Entities;
 using NRG3.Bliss.API.ServiceManagement.Domain.Model.Aggregates;
 using NRG3.Bliss.API.ServiceManagement.Domain.Model.Entities;
 using NRG3.Bliss.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
-
+using NRG3.Bliss.API.ReviewManagement.Domain.Model.Aggregates;
 namespace NRG3.Bliss.API.Shared.Infrastructure.Persistence.EFC.Configuration;
 
 public class AppDbContext(DbContextOptions options) : DbContext(options)
 {
+    public DbSet<Appointment> Appointments { get; set; }
+    public DbSet<Review> Reviews { get; set; }
+    public DbSet<Service> Services { get; set; }
+    public DbSet<Company> Companies { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
         builder.AddCreatedUpdatedInterceptor();
@@ -92,6 +96,19 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             .WithOne(a => a.User)
             .HasForeignKey(a => a.UserId)
             .HasPrincipalKey(u => u.Id);
+        
+        builder.Entity<Review>()
+            .HasKey(r => r.Id);
+        builder.Entity<Review>().Property(r => r.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Review>().Property(r => r.UserId).IsRequired();
+        builder.Entity<Review>().Property(r => r.AppointmentId).IsRequired();
+        builder.Entity<Review>().Property(r => r.Comment).IsRequired().HasMaxLength(400);
+        builder.Entity<Review>().Property(r => r.Rating).IsRequired();
+        builder.Entity<Review>().Property(r => r.ImageUrl).HasMaxLength(500);
+        
+        builder.Entity<Review>()
+            .HasIndex(r => r.AppointmentId)
+            .IsUnique();
         
         builder.UseSnakeCaseNamingConvention();
     }

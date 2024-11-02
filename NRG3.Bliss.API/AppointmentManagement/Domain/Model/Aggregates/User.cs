@@ -1,4 +1,5 @@
 ﻿using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Aggregates;
+using NRG3.Bliss.API.ReviewManagement.Domain.Model.Aggregates;
 
 namespace NRG3.Bliss.API.AppointmentManagement.Domain.Model.Entities;
 
@@ -23,6 +24,9 @@ public partial class User
     public DateTime BirthDate { get; private set; }
     
     public ICollection<Appointment> Appointments { get; }
+    
+    public ICollection<Review> Reviews { get; private set; } = new List<Review>();
+
     
     public User( string firstName, 
         string lastName, 
