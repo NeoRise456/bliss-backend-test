@@ -1,0 +1,32 @@
+﻿using NRG3.Bliss.API.ReviewManagement.Domain.Model.Aggregates;
+using NRG3.Bliss.API.ReviewManagement.Domain.Model.Queries;
+using NRG3.Bliss.API.ReviewManagement.Domain.Repositories;
+using NRG3.Bliss.API.ReviewManagement.Domain.Services;
+
+namespace NRG3.Bliss.API.ReviewManagement.Application.Internal.QueryServices;
+
+/// <summary>
+/// Review query service
+/// </summary>
+/// <param name="reviewRepository">
+/// Review repository
+/// </param>
+public class ReviewQueryService(IReviewRepository reviewRepository) : IReviewQueryService
+{
+    /// <inheritdoc />
+    public async Task<IEnumerable<Review>> Handle(GetAllReviewsByUserIdQuery query)
+    {
+        return await reviewRepository.FindReviewsByUserIdAsync(query.UserId);
+    }
+
+    public Task<IEnumerable<Review>> Handle(GetAllReviewsByCompanyIdQuery query)
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <inheritdoc />
+    public async Task<Review?> Handle(GetReviewByIdQuery query)
+    {
+        return await reviewRepository.FindReviewByIdAsync(query.reviewId);
+    }
+}
