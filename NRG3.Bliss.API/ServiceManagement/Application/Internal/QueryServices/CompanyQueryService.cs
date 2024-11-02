@@ -14,7 +14,12 @@ public class CompanyQueryService(ICompanyRepository companyRepository) : ICompan
 
     public async Task<Company?> Handle(GetCompanyByIdQuery query)
     {
-        return await companyRepository.FindByIdAsync(query.CompanyId);
+        var company = await companyRepository.FindByIdAsync(query.CompanyId);
+        if (company == null)
+        {
+            throw new InvalidOperationException("The company does not exist.");
+        }
+        return company;
     }
     
 }
