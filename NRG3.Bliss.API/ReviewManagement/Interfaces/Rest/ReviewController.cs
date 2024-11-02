@@ -147,4 +147,31 @@ public class ReviewsController(
         await reviewCommandService.Handle(deleteReviewCommand);
         return Ok("The review with the given id was successfully deleted");
     }
+    /// <summary>
+    /// Update a review by id
+    /// </summary>
+    /// <param name="reviewId">
+    /// The id of the review to update
+    /// </param>
+    /// <param name="resource">
+    /// The <see cref="UpdateReviewResource"/> resource with updated data
+    /// </param>
+    /// <returns>
+    /// The updated <see cref="ReviewResource"/> resource
+    /// </returns>
+    [HttpPut("{reviewId:int}")]
+    [SwaggerOperation(
+        Summary = "Update a review by id",
+        Description = "Update a review in the system by its id",
+        OperationId = "UpdateReviewById")]
+    [SwaggerResponse(StatusCodes.Status200OK, "The review was updated", typeof(ReviewResource))]
+    [SwaggerResponse(StatusCodes.Status404NotFound, "The review was not found.")]
+    public async Task<IActionResult> UpdateReviewById([FromRoute] int reviewId, [FromBody] UpdateReviewResource resource)
+    {
+        var updateReviewCommand = UpdateReviewCommandResourceFromEntityAssembler.ToCommandFromResource(reviewId, resource);
+        var review = await reviewCommandService.Handle(updateReviewCommand);
+        if (review is null) return NotFound();
+        var reviewResource = ReviewResourceFromEntityAssembler.ToResourceFromEntity(review);
+        return Ok(reviewResource);
+    }
 }
