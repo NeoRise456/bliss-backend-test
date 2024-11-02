@@ -1,3 +1,4 @@
+using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Aggregates;
 using NRG3.Bliss.API.ServiceManagement.Domain.Model.Aggregates;
 using NRG3.Bliss.API.ServiceManagement.Domain.Model.Commands;
 
@@ -19,6 +20,8 @@ public partial class Company
     
     public string Description { get; set; }
     public ICollection<Service> Services { get; }
+    
+    public ICollection<Appointment> Appointments { get; }
     
     public Company()
     {
