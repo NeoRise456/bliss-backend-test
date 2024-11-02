@@ -1,4 +1,5 @@
-﻿using System.Net.Mime;
+﻿// ReviewsController.cs
+using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
 using NRG3.Bliss.API.ReviewManagement.Domain.Model.Commands;
 using NRG3.Bliss.API.ReviewManagement.Domain.Model.Queries;
@@ -9,15 +10,6 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace NRG3.Bliss.API.ReviewManagement.Interfaces.Rest;
 
-/// <summary>
-/// Controller for managing reviews
-/// </summary>
-/// <param name="reviewCommandService">
-/// The review command service
-/// </param>
-/// <param name="reviewQueryService">
-/// The review query service
-/// </param>
 [ApiController]
 [Route("api/v1/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
@@ -27,15 +19,6 @@ public class ReviewsController(
     IReviewQueryService reviewQueryService
     ) : ControllerBase
 {
-    /// <summary>
-    /// Get review by id
-    /// </summary>
-    /// <param name="reviewId">
-    /// The id of the review to get
-    /// </param>
-    /// <returns>
-    /// The <see cref="ReviewResource"/> resource with the given id
-    /// </returns>
     [HttpGet("{reviewId:int}")]
     [SwaggerOperation(
         Summary = "Get review by id",
@@ -52,15 +35,6 @@ public class ReviewsController(
         return Ok(reviewResource);
     }
 
-    /// <summary>
-    /// Get reviews by user id
-    /// </summary>
-    /// <param name="userId">
-    /// The id of the user to get reviews for
-    /// </param>
-    /// <returns>
-    /// The <see cref="ReviewResource"/> resources for the given user id
-    /// </returns>
     [HttpGet("user/{userId:int}")]
     [SwaggerOperation(
         Summary = "Get reviews by user id",
@@ -76,15 +50,6 @@ public class ReviewsController(
         return Ok(reviewResources);
     }
 
-    /// <summary>
-    /// Get reviews by company id
-    /// </summary>
-    /// <param name="companyId">
-    /// The id of the company to get reviews for
-    /// </param>
-    /// <returns>
-    /// The <see cref="ReviewResource"/> resources for the given company id
-    /// </returns>
     [HttpGet("company/{companyId:int}")]
     [SwaggerOperation(
         Summary = "Get reviews by company id",
@@ -100,15 +65,6 @@ public class ReviewsController(
         return Ok(reviewResources);
     }
 
-    /// <summary>
-    /// Create a new review
-    /// </summary>
-    /// <param name="resource">
-    /// The <see cref="CreateReviewResource"/> resource to create
-    /// </param>
-    /// <returns>
-    /// The <see cref="ReviewResource"/> resource created
-    /// </returns>
     [HttpPost]
     [SwaggerOperation(
         Summary = "Create a new review",
@@ -121,19 +77,17 @@ public class ReviewsController(
         var createReviewCommand = CreateReviewCommandResourceFromEntityAssembler.ToCommandFromResource(resource);
         var review = await reviewCommandService.Handle(createReviewCommand);
         if (review is null) return NotFound();
+
+        var appointment = await reviewQueryService.GetAppointmentByIdAsync(review.AppointmentId);
+        if (appointment?.Service == null || appointment.Company == null)
+        {
+            return BadRequest("Appointment's Service or Company is null");
+        }
+
         var reviewResource = ReviewResourceFromEntityAssembler.ToResourceFromEntity(review);
         return CreatedAtAction(nameof(GetReviewById), new { reviewId = review.Id }, reviewResource);
     }
 
-    /// <summary>
-    /// Delete a review by id
-    /// </summary>
-    /// <param name="reviewId">
-    /// The id of the review to delete
-    /// </param>
-    /// <returns>
-    /// A message indicating the review was deleted
-    /// </returns>
     [HttpDelete("{reviewId:int}")]
     [SwaggerOperation(
         Summary = "Delete a review by id",
@@ -147,18 +101,7 @@ public class ReviewsController(
         await reviewCommandService.Handle(deleteReviewCommand);
         return Ok("The review with the given id was successfully deleted");
     }
-    /// <summary>
-    /// Update a review by id
-    /// </summary>
-    /// <param name="reviewId">
-    /// The id of the review to update
-    /// </param>
-    /// <param name="resource">
-    /// The <see cref="UpdateReviewResource"/> resource with updated data
-    /// </param>
-    /// <returns>
-    /// The updated <see cref="ReviewResource"/> resource
-    /// </returns>
+
     [HttpPut("{reviewId:int}")]
     [SwaggerOperation(
         Summary = "Update a review by id",

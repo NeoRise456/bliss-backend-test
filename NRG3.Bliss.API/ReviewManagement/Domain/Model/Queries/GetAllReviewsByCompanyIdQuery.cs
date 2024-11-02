@@ -7,4 +7,4 @@
 /// The user id to get reviews for
 /// </param>
 
-public record GetAllReviewsByCompanyIdQuery(int CompanyID);
+public record GetAllReviewsByCompanyIdQuery(int CompanyId);

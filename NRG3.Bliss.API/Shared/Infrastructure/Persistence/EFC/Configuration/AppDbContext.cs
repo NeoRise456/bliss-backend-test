@@ -10,6 +10,10 @@ namespace NRG3.Bliss.API.Shared.Infrastructure.Persistence.EFC.Configuration;
 
 public class AppDbContext(DbContextOptions options) : DbContext(options)
 {
+    public DbSet<Appointment> Appointments { get; set; }
+    public DbSet<Review> Reviews { get; set; }
+    public DbSet<Service> Services { get; set; }
+    public DbSet<Company> Companies { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
         builder.AddCreatedUpdatedInterceptor();

@@ -1,4 +1,6 @@
-﻿using NRG3.Bliss.API.ReviewManagement.Domain.Model.Aggregates;
+﻿using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Aggregates;
+using NRG3.Bliss.API.AppointmentManagement.Domain.Repositories;
+using NRG3.Bliss.API.ReviewManagement.Domain.Model.Aggregates;
 using NRG3.Bliss.API.ReviewManagement.Domain.Model.Queries;
 using NRG3.Bliss.API.ReviewManagement.Domain.Repositories;
 using NRG3.Bliss.API.ReviewManagement.Domain.Services;
@@ -11,7 +13,8 @@ namespace NRG3.Bliss.API.ReviewManagement.Application.Internal.QueryServices;
 /// <param name="reviewRepository">
 /// Review repository
 /// </param>
-public class ReviewQueryService(IReviewRepository reviewRepository) : IReviewQueryService
+public class ReviewQueryService(IReviewRepository reviewRepository,
+    IAppointmentRepository appointmentRepository) : IReviewQueryService
 {
     /// <inheritdoc />
     public async Task<IEnumerable<Review>> Handle(GetAllReviewsByUserIdQuery query)
@@ -19,9 +22,16 @@ public class ReviewQueryService(IReviewRepository reviewRepository) : IReviewQue
         return await reviewRepository.FindReviewsByUserIdAsync(query.UserId);
     }
 
-    public Task<IEnumerable<Review>> Handle(GetAllReviewsByCompanyIdQuery query)
+    public async Task<IEnumerable<Review>> Handle(GetAllReviewsByCompanyIdQuery query)
     {
-        throw new NotImplementedException();
+        return await reviewRepository.FindReviewsByCompanyIdAsync(query.CompanyId);
+
+    }
+
+    public async Task<Appointment?> GetAppointmentByIdAsync(int appointmentId)
+    {
+        return await appointmentRepository.FindAppointmentByIdAsync(appointmentId);
+
     }
 
     /// <inheritdoc />

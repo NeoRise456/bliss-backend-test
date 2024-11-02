@@ -1,4 +1,6 @@
 ﻿// IReviewQueryService.cs
+
+using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Aggregates;
 using NRG3.Bliss.API.ReviewManagement.Domain.Model.Aggregates;
 using NRG3.Bliss.API.ReviewManagement.Domain.Model.Queries;
 
@@ -41,4 +43,6 @@ public interface IReviewQueryService
     /// The <see cref="IEnumerable{Review}"/> object with the reviews
     /// </returns>
     Task<IEnumerable<Review>> Handle(GetAllReviewsByCompanyIdQuery query);
+    
+    Task<Appointment?> GetAppointmentByIdAsync(int appointmentId);
 }
