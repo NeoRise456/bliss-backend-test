@@ -6,4 +6,4 @@
 /// The review id to delete
 /// </param>
 
-public class DeleteReviewCommand(int reviewId);
+public record DeleteReviewCommand(int reviewId);

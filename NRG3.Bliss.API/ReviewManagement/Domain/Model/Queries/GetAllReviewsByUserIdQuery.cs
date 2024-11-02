@@ -6,4 +6,4 @@
 /// <param name="UserId">
 /// The user id to get reviews for
 /// </param>
-public class GetAllReviewsByUserIdQuery(int UserId);
+public record GetAllReviewsByUserIdQuery(int UserId);
