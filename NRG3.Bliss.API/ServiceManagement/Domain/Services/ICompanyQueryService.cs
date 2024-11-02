@@ -7,4 +7,6 @@ public interface ICompanyQueryService
 {
     Task<IEnumerable<Company>> Handle(GetAllCompaniesQuery query);
     Task<Company?> Handle(GetCompanyByIdQuery query);
+    
+   
 }

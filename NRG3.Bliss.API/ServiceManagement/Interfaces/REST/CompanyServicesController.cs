@@ -11,7 +11,7 @@ namespace NRG3.Bliss.API.ServiceManagement.Interfaces.REST;
 [ApiController]
 [Route("api/v1/companies/{companyId}/services")]
 [Produces(MediaTypeNames.Application.Json)]
-[Tags("Companies")]
+[Tags("Services")]
 public class CompanyServicesController(IServiceQueryService serviceQueryService) : ControllerBase
 {
     [HttpGet]

@@ -15,6 +15,11 @@ public class ServiceCommandService(
 {
     public async Task<Service?> Handle(CreateServiceCommand command)
     {
+        if (await serviceRepository.ServiceNameExistsForCompanyAndCategoryAsync(command.CompanyId, command.CategoryId,
+                command.ServiceName))
+        {
+            throw new InvalidOperationException("The service name already exists for the company and category.");
+        }
         var service = new Service(command.CompanyId, command.CategoryId, command.ServiceName, command.Description, command.Price, command.Duration);
         await serviceRepository.AddAsync(service);
         await unitOfWork.CompleteAsync();

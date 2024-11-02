@@ -5,5 +5,5 @@ namespace NRG3.Bliss.API.ServiceManagement.Domain.Repositories;
 
 public interface ICompanyRepository : IBaseRepository<Company>
 {
-    
+    Task<IEnumerable<Company>> FindCompaniesByCompanyName(string name);
 }

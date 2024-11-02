@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using NRG3.Bliss.API.ServiceManagement.Domain.Model.Entities;
 using NRG3.Bliss.API.ServiceManagement.Domain.Repositories;
 using NRG3.Bliss.API.Shared.Infrastructure.Persistence.EFC.Configuration;
@@ -7,5 +8,10 @@ namespace NRG3.Bliss.API.ServiceManagement.Infrastructure.Persistence.EFC.Reposi
 
 public class CompanyRepository(AppDbContext context) : BaseRepository<Company>(context), ICompanyRepository
 {
+    
+    public async Task<IEnumerable<Company>> FindCompaniesByCompanyName(string name)=> 
+        await Context.Set<Company>()
+        .Where(c => c.Name == name)
+        .ToListAsync();
     
 }

@@ -11,6 +11,11 @@ public class CompanyCommandService(ICompanyRepository companyRepository, IUnitOf
 {
     public async Task<Company?> Handle(CreateCompanyCommand command)
     {
+        var existingCompany = await companyRepository.FindCompaniesByCompanyName(command.Name);
+        if (existingCompany.Any())
+        {
+            throw new InvalidOperationException("The company name already exists.");
+        }
         var company = new Company(command);
         await companyRepository.AddAsync(company);
         await unitOfWork.CompleteAsync();
