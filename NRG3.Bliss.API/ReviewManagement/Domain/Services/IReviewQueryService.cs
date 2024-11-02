@@ -23,10 +23,10 @@ public interface IReviewQueryService
     /// Handle get all reviews by company id query
     /// </summary>
     /// <param name="query">
-    /// The <see cref="GetAllReviewsByCompanyId"/> query
+    /// The <see cref="GetAllReviewsByCompanyIdQuery"/> query
     /// </param>
     /// <returns>
     /// The <see cref="IEnumerable{Review}"/> object with the reviews
     /// </returns>
-    Task<IEnumerable<Review>> Handle(GetAllReviewsByCompanyId query);
+    Task<IEnumerable<Review>> Handle(GetAllReviewsByCompanyIdQuery query);
 }
