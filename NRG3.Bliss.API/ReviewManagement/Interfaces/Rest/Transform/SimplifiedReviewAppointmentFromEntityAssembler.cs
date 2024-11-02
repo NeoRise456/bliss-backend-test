@@ -8,8 +8,8 @@ public static class SimplifiedReviewAppointmentFromEntityAssembler
     public static SimplifiedAppointmentResource ToResourceFromEntity(Appointment appointment)
     {
         return new SimplifiedAppointmentResource(
-            appointment.ServiceId,
-            appointment.CompanyId,
+            appointment.Service.ServiceName,
+            appointment.Company.Name,
             appointment.ReservationStartTime,
             appointment.UserId
         );

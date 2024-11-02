@@ -100,8 +100,6 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         builder.Entity<Review>().Property(r => r.AppointmentId).IsRequired();
         builder.Entity<Review>().Property(r => r.Comment).IsRequired().HasMaxLength(400);
         builder.Entity<Review>().Property(r => r.Rating).IsRequired();
-        builder.Entity<Review>().Property(r => r.ReviewDate).IsRequired();
-        builder.Entity<Review>().Property(r => r.ReviewUpdateDate).IsRequired();
         builder.Entity<Review>().Property(r => r.ImageUrl).HasMaxLength(500);
         
         builder.Entity<Review>()

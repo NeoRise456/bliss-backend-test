@@ -26,8 +26,6 @@ public static class ReviewResourceFromEntityAssembler
             review.Id,
             review.UserId,
             simplifiedAppointmentResource,
-            review.ReviewDate,
-            review.ReviewUpdateDate,
             review.Rating,
             review.Comment,
             review.ImageUrl

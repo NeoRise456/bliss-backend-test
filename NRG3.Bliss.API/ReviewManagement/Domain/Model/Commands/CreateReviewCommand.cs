@@ -24,4 +24,4 @@
 /// The image url of the review
 
 
-public record CreateReviewCommand( int UserId, int AppointmentId, int Rating, string Comment, DateTime ReviewDate, DateTime ReviewUpdateDate, string ImageUrl);
+public record CreateReviewCommand( int UserId, int AppointmentId, int Rating, string Comment, string ImageUrl);

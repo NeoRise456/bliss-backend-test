@@ -15,4 +15,4 @@
 /// <param name="UserId">
 /// The unique identifier of the user
 /// </param>
-public record SimplifiedAppointmentResource(int ServiceId, int CompanyId, string ReservationStartTime, int UserId);
+public record SimplifiedAppointmentResource(string ServiceName, string CompanyName, string ReservationStartTime, int UserId);

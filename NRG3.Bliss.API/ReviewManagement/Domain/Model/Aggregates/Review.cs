@@ -1,4 +1,5 @@
-﻿using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Aggregates;
+﻿using System.ComponentModel.DataAnnotations;
+using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Aggregates;
 using NRG3.Bliss.API.AppointmentManagement.Domain.Model.Entities;
 using NRG3.Bliss.API.ReviewManagement.Domain.Model.Commands;
 namespace NRG3.Bliss.API.ReviewManagement.Domain.Model.Aggregates;
@@ -13,6 +14,7 @@ namespace NRG3.Bliss.API.ReviewManagement.Domain.Model.Aggregates;
 
 public partial class Review
 {
+    [Key]
     public int  Id { get; }
     public int UserId { get; internal set; }
     public User UserR { get; internal set; }
@@ -21,8 +23,7 @@ public partial class Review
     Appointment { get; set; }
     public string Comment { get; private set; }
     public int Rating { get; private set; }
-    public DateTime CreatedAt { get; private set; }
-    public DateTime UpdatedAt { get; private set; }
+
     public string ImageUrl { get; private set; }
    
     public Review(){
@@ -34,8 +35,7 @@ public partial class Review
         AppointmentId = command.AppointmentId;
         Comment = command.Comment;
         Rating = command.Rating;
-        CreatedAt = DateTime.Now;
-        UpdatedAt = DateTime.Now;
+        ImageUrl = command.ImageUrl;
     }
 }
 
