@@ -88,7 +88,8 @@ public class AppointmentCommandService(
         {
             return null; 
         }
-
+        
+        //TODO: Create a constructor to update this appointment (Gianluca)
         appointment.UserId = command.UserId;
         appointment.CompanyId = command.CompanyId;
         appointment.ServiceId = command.ServiceId;
@@ -101,6 +102,4 @@ public class AppointmentCommandService(
 
         return appointment;
     }
-    
-    
 }

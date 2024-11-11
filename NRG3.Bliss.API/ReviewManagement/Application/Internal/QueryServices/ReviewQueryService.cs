@@ -37,6 +37,6 @@ public class ReviewQueryService(IReviewRepository reviewRepository,
     /// <inheritdoc />
     public async Task<Review?> Handle(GetReviewByIdQuery query)
     {
-        return await reviewRepository.FindReviewByIdAsync(query.reviewId);
+        return await reviewRepository.FindReviewByIdAsync(query.ReviewId);
     }
 }

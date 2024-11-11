@@ -17,10 +17,11 @@ public partial class Review
     [Key]
     public int  Id { get; }
     public int UserId { get; internal set; }
+    //TODO: Correct UserR to User(Elvia)
     public User UserR { get; internal set; }
     public int AppointmentId { get; internal set; }
-    public Appointment
-    Appointment { get; set; }
+    //TODO: Remove Appointment(Elvia)
+    public Appointment Appointment { get; set; }
     public string Comment { get; private set; }
     public int Rating { get; private set; }
 

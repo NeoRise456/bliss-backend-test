@@ -8,6 +8,8 @@ namespace NRG3.Bliss.API.ReviewManagement.Domain.Repositories;
 /// </summary>
 public interface IReviewRepository : IBaseRepository<Review>
 {
+    //TODO: Change the return types to boolean on validation methods (Elvia)
+    
     /// <summary>
     /// Find reviews by user id
     /// </summary>

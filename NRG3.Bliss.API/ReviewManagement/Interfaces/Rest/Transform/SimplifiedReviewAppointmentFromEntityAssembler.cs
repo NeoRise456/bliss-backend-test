@@ -3,6 +3,8 @@ using NRG3.Bliss.API.ReviewManagement.Interfaces.Rest.Resources;
 using NRG3.Bliss.API.AppointmentManagement.Interfaces.Rest.Transform;
 
 namespace NRG3.Bliss.API.ReviewManagement.Interfaces.Rest.Transform;
+
+//TODO: Correct naming of the class to match resource name (Elvia)
 public static class SimplifiedReviewAppointmentFromEntityAssembler
 {
     public static SimplifiedAppointmentResource ToResourceFromEntity(Appointment appointment)

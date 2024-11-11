@@ -1,5 +1,7 @@
 ﻿namespace NRG3.Bliss.API.AppointmentManagement.Interfaces.Rest.Resources;
 
+//TODO: move this resource and related assemblers to the shared context (Astonitas)
+//TODO: remove DNI
 /// <summary>
 /// Simplified Resource for a user
 /// </summary>

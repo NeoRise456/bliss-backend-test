@@ -21,6 +21,7 @@ public partial class Company
     public string Description { get; set; }
     public ICollection<Service> Services { get; }
     
+    //TODO: Correct this relationship (Astonitas)
     public ICollection<Appointment> Appointments { get; }
     
     public Company()
