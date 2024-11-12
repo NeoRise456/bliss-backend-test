@@ -3,8 +3,8 @@
 /// <summary>
 /// Update review command
 /// </summary>
-/// <param name="reviewId">
+/// <param name="ReviewId">
 /// The review id to update
 /// </param>
 
-public record UpdateReviewCommand(int reviewId, string Comment, int Rating, string ImageUrl);
+public record UpdateReviewCommand(int ReviewId, string Comment, int Rating, string ImageUrl);

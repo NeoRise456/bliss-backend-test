@@ -68,7 +68,7 @@ public class ReviewCommandService(
     /// <inheritdoc />
     public async Task<Review?> Handle(UpdateReviewCommand command)
     {
-        var review = await reviewRepository.FindReviewByIdAsync(command.reviewId);
+        var review = await reviewRepository.FindReviewByIdAsync(command.ReviewId);
         if (review != null)
         {
             // Update properties here

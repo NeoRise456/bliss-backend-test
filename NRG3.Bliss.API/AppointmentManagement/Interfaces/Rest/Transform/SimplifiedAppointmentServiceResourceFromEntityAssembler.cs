@@ -7,6 +7,8 @@ namespace NRG3.Bliss.API.AppointmentManagement.Interfaces.Rest.Transform;
 /// <summary>
 /// Assembler to create a SimplifiedServiceResource from a Service entity
 /// </summary>
+
+//TODO: Correct assembler naming (Astonitas)
 public static class SimplifiedAppointmentServiceResourceFromEntityAssembler
 {
     /// <summary>

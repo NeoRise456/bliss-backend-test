@@ -8,6 +8,7 @@ namespace NRG3.Bliss.API.AppointmentManagement.Domain.Repositories;
 /// </summary>
 public interface IAppointmentRepository : IBaseRepository<Appointment>
 {
+    //TODO: Change the return types to boolean on validation methods (Astonitas)
     
     /// <summary>
     /// Find appointments by user id

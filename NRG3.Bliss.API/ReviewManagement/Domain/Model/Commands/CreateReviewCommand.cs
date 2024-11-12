@@ -1,4 +1,5 @@
 ﻿namespace NRG3.Bliss.API.ReviewManagement.Domain.Model.Commands;
+//TODO: Remove unnecessary parameters (Elvia)
 /// <summary>
 /// Create appointment command
 /// </summary>

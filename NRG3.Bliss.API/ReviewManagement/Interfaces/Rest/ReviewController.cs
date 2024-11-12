@@ -49,7 +49,8 @@ public class ReviewsController(
         var reviewResources = reviews.Select(ReviewResourceFromEntityAssembler.ToResourceFromEntity);
         return Ok(reviewResources);
     }
-
+    
+    //TODO: Refactor this function to match the following endpoint in a different controller (api/v1/companies/{companyId:int}/services/appointments/reviews) ask Angel (Elvia)
     [HttpGet("company/{companyId:int}")]
     [SwaggerOperation(
         Summary = "Get reviews by company id",

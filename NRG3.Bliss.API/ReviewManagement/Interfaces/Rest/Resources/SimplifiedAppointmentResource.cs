@@ -1,5 +1,6 @@
 ﻿namespace NRG3.Bliss.API.ReviewManagement.Interfaces.Rest.Resources;
 
+//TODO: Check the resource naming (SimplifiedAppointmentResource || ReviewAppointmentResource)(Elvia)
 /// <summary>
 /// Simplified Resource for an appointment
 /// </summary>

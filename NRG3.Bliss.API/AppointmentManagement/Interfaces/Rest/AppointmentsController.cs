@@ -39,8 +39,8 @@ public class AppointmentsController(
     /// </returns>
     [HttpGet("{appointmentId:int}")]
     [SwaggerOperation(
-        Summary = "Get appointments by id",
-        Description = "Get an appointments by the id it has",
+        Summary = "Get appointment by id",
+        Description = "Get an appointment by the id it has",
         OperationId = "GetAppointmentById")]
     [SwaggerResponse(StatusCodes.Status200OK, "The appointment was found", typeof(AppointmentResource))]
     [SwaggerResponse(StatusCodes.Status404NotFound, "The appointment was not found.")]
@@ -53,6 +53,7 @@ public class AppointmentsController(
         return Ok(appointmentResource);
     }
     
+    //TODO: Refactor function and controller location in order to match the following endpoint (api/v1/users/{userId:int}/appointments) (Astonitas)
     /// <summary>
     /// Get appointments by user id
     /// </summary>
