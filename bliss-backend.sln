@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# 
+#
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRG3.Bliss.API", "NRG3.Bliss.API\NRG3.Bliss.API.csproj", "{1E257A0F-A01B-47D7-A4F2-41500E4DB888}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRG3.Bliss.API.Tests", "NRG3.Bliss.API.Tests\NRG3.Bliss.API.Tests.csproj", "{EB620997-A354-4598-A584-DF48D41D4153}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C5BAE9F2-5C53-4C2B-8887-C7AF627942BF}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
