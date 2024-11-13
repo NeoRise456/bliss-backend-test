@@ -1,0 +1,22 @@
+﻿services:
+  nrg3.bliss.api:
+    image: nrg3.bliss.api
+    build:
+      context: .
+      dockerfile: NRG3.Bliss.API/Dockerfile
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+  
+  nrg3.bliss.database:
+    image: mysql
+    container_name: bliss_db
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: blissbackend
+    ports:
+        - "3306:3306"
+    
+volumes:
+  bliss_data:
+
