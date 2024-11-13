@@ -8,7 +8,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["NRG3.Bliss.API/NRG3.Bliss.API.csproj", "NRG3.Bliss.API/"]
-#RUN dotnet restore "NRG3.Bliss.API/NRG3.Bliss.API.csproj"
+
 COPY . .
 WORKDIR "/src/NRG3.Bliss.API"
 RUN dotnet build "NRG3.Bliss.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
